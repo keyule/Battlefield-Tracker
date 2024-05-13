@@ -35,7 +35,7 @@ Replace your_bearer_token_here, your_body_hmac_here, and initial_request_id_valu
 ## Usage
 To run the script, simply execute it from the command line:
 ```bash
-python battlefield_monitor.py
+python battlefield.py
 ```
 
 ## Configuration
