@@ -8,6 +8,9 @@ This Python script is designed to monitor and report on battlefield conditions a
 - **Alert system:** Notifies users of new mob spawns that meet specific time and reward criteria.
 - **Data presentation:** Displays battlefield information in a clear and structured table format.
 
+## Screenshot
+![](./Images/Screenshot.png)
+
 ## Requirements
 
 - Python 3.8 or newer
