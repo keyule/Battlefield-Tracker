@@ -56,7 +56,7 @@ This guide will show you how to intercept the network traffic from a mobile game
    - Go to `Settings > Preferences`.
    - Enable Android Debug Bridge (ADB) integration.
    - Take note of ADB address
-   [Enable ADB on BlueStacks](./enableADB.png)
+   ![Enable ADB on BlueStacks](./enableADB.png)
 
 ### Step 6: Connect to BlueStacks Using ADB
 

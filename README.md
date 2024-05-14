@@ -35,6 +35,8 @@ REQUEST_ID=initial_request_id_value
 ```
 Replace your_bearer_token_here, your_body_hmac_here, and initial_request_id_value with your actual credentials and the initial request ID.
 
+For detailed instructions on how to obtain the BEARER_TOKEN, refer to our [Guide on Obtaining the Bearer Token](./Guide/README.md). This guide provides step-by-step instructions to capture the necessary token through network interception using tools like BlueStacks and HTTP Toolkit.
+
 ## Usage
 To run the script, simply execute it from the command line:
 ```bash
