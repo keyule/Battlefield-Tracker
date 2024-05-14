@@ -11,6 +11,9 @@ from prettytable import PrettyTable
 # Load environment variables
 load_dotenv()
 
+# Global region map
+REGION_MAP = {0: "Pirate", 1: "Cat", 2: "Wolf", 3: "Food"}
+
 # Initialize request-id in memory
 current_request_id = int(os.getenv('REQUEST_ID'))
 
@@ -53,23 +56,25 @@ def calculate_time_details(gen_time_str, disp_time_str):
     return gen_time.strftime('%m-%d %H:%M:%S'), disp_time.strftime('%m-%d %H:%M:%S'), time_left_str
 
 def alert_for_new_mobs(new_mobs, data, min_time_left, reward_ids):
-    """Alerts if new mobs meet the criteria of time left and reward IDs."""
+    """Alerts if new mobs meet the criteria of time left, reward IDs, and includes region information."""
     singapore_tz = pytz.timezone('Asia/Singapore')
     current_time = datetime.now(timezone.utc).astimezone(singapore_tz)
     alert_mobs = []
 
     for mob in new_mobs:
         for region in data["regions"]:
+            region_name = REGION_MAP.get(region['region'], "Unknown")
             for battlefield in region["battlefields"]:
                 if battlefield['id'] == mob:
                     gen_time_str, disp_time_str, time_left_str = calculate_time_details(battlefield["generatedTime"], battlefield["disappearedTime"])
                     disp_time = datetime.fromisoformat(battlefield["disappearedTime"][:-1]).replace(tzinfo=timezone.utc).astimezone(singapore_tz)
                     time_left = disp_time - current_time
-                    minutes_left = (time_left.seconds // 60) + time_left.days * 1440  # Convert days to minutes if any
+                    minutes_left = (time_left.seconds // 60) + time_left.days * 1440
 
                     if minutes_left < min_time_left and (not reward_ids or battlefield['rewardGroupId'] in reward_ids):
                         alert_mobs.append({
                             'id': battlefield['id'],
+                            'region': f"{region['region']} - {region_name}",
                             'rewardGroupId': battlefield['rewardGroupId'],
                             'timeLeftStr': time_left_str,
                             'minutesLeft': minutes_left
@@ -78,16 +83,15 @@ def alert_for_new_mobs(new_mobs, data, min_time_left, reward_ids):
     if alert_mobs:
         print("Alert: New mobs with less than specified time left and specific reward IDs have spawned:")
         for mob in alert_mobs:
-            print(f"ID: {mob['id']}, Reward Group ID: {mob['rewardGroupId']}, Time Left: {mob['timeLeftStr']} ({mob['minutesLeft']} minutes)")
+            print(f"ID: {mob['id']}, Region: {mob['region']}, Reward Group ID: {mob['rewardGroupId']}, Time Left: {mob['timeLeftStr']} ({mob['minutesLeft']} minutes)")
 
 def print_battlefield_info(data, previous_ids, min_time_left, reward_ids):
     table = PrettyTable()
     table.field_names = ["ID", "Region", "Level", "Generated Time (SGT)", "Disappearing Time (SGT)", "Time Left", "Reward Group ID"]
     current_ids = []
-    region_map = {0: "Pirate", 1: "Cat", 2: "Wolf", 3: "Food"}
 
     for region in data["regions"]:
-        region_name = region_map.get(region['region'], "Unknown")
+        region_name = REGION_MAP.get(region['region'], "Unknown")
         for battlefield in region["battlefields"]:
             gen_time, disp_time, time_left_str = calculate_time_details(battlefield["generatedTime"], battlefield["disappearedTime"])
             table.add_row([battlefield['id'], f"{region['region']} - {region_name}", battlefield['level'], gen_time, disp_time, time_left_str, battlefield['rewardGroupId']])
