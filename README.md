@@ -37,6 +37,8 @@ Replace your_bearer_token_here, your_body_hmac_here, and initial_request_id_valu
 
 For detailed instructions on how to obtain the BEARER_TOKEN, refer to our [Guide on Obtaining the Bearer Token](./Guide/README.md). This guide provides step-by-step instructions to capture the necessary token through network interception using tools like BlueStacks and HTTP Toolkit.
 
+> Note: The Bearer Token will expire and is needed to be changed daily, so you will have to do all those steps everyday. When you get an error and the thing stops running, means its time to change your token. 
+
 ## Usage
 To run the script, simply execute it from the command line:
 ```bash
@@ -46,5 +48,7 @@ python battlefield.py
 ## Configuration
 - Minimum time left for alerts (min_time_left): Set this value to change the threshold for the time left alerts.
 - Reward IDs (reward_ids): Specify which reward IDs should trigger alerts when they appear on new mobs.
+- Timezone: To modify it to your timezone, just throw the whole script into chatgpt and ask it to help you modify it 
 
 These configurations can be adjusted directly in the script.
+
