@@ -56,7 +56,7 @@ This guide will show you how to intercept the network traffic from a mobile game
    - Go to `Settings > Preferences`.
    - Enable Android Debug Bridge (ADB) integration.
    - Take note of ADB address
-   ![Enable ADB on BlueStacks](./enableADB.png)
+   ![Enable ADB on BlueStacks](./Images/enableADB.png)
 
 ### Step 6: Connect to BlueStacks Using ADB
 
@@ -77,10 +77,10 @@ This guide will show you how to intercept the network traffic from a mobile game
 
 7. **Set up HTTP Toolkit to intercept BlueStacks traffic**:
    - Open HTTP Toolkit.
-   - Select to intercept traffic from BlueStacks.
+   - Select to intercept traffic from Andriod Device via ADB.
    - Follow the on-screen instructions to install HTTP Toolkit's SSL certificate on BlueStacks, allowing it to decrypt HTTPS traffic.
    - If installed correctly you should see the System Trust Enabled with a green checkmark.
-   ![http tool kit](./httptoolkit.png)
+   ![http tool kit](./Images/httptoolkit.png)
 
 
 ### Step 8: Capture the Bearer Token
@@ -90,8 +90,8 @@ This guide will show you how to intercept the network traffic from a mobile game
    - Navigate to the part of the game where it connects to its servers (e.g., entering the battlefield).
    - HTTP Toolkit will capture the HTTP and HTTPS requests and responses.
    - Look through the captured data for API calls to the game's server. Examine the request headers for an `Authorization` field, which will contain the bearer token, HMAC and request id
-   ![request to look for](./request1.png)
-   ![request body](./request2.png)
+   ![request to look for](./Images/request1.png)
+   ![request body](./Images/request2.png)
 
 
 After completing these steps, you should have the bearer token necessary for accessing the game's API for your application.
