@@ -126,7 +126,7 @@ def main():
 
             current_time = datetime.now()
             print("Last Updated:", current_time.strftime("%H:%M:%S"))
-            time.sleep(600)  # Sleep for 10 minutes
+            time.sleep(300)  # Sleep for 10 minutes
     except KeyboardInterrupt:
         print("Stopped by user.")
 

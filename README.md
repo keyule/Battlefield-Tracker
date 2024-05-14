@@ -32,8 +32,13 @@ pip install requests pytz python-dotenv prettytable
 BEARER_TOKEN=your_bearer_token_here
 BODY_HMAC=your_body_hmac_here
 REQUEST_ID=initial_request_id_value
+TELEGRAM_TOKEN=your_bot_token
+TELEGRAM_CHAT_ID=your_id_here
+TELEGRAM_ALERTS_ENABLED=False
 ```
 Replace your_bearer_token_here, your_body_hmac_here, and initial_request_id_value with your actual credentials and the initial request ID.
+
+You can leave the telegram stuff alone
 
 For detailed instructions on how to obtain the BEARER_TOKEN, refer to our [Guide on Obtaining the Bearer Token](./Guide/README.md). This guide provides step-by-step instructions to capture the necessary token through network interception using tools like BlueStacks and HTTP Toolkit.
 
