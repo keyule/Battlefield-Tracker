@@ -5,7 +5,10 @@ import pytz
 import json
 from datetime import datetime, timezone
 import time
+import sys
 from prettytable import PrettyTable
+from telegram_alert import send_telegram_message
+
 
 
 # Load environment variables
@@ -36,6 +39,10 @@ def get_battlefields():
     # Make the request
     response = requests.post(url, headers=headers, json={})
 
+    if response.status_code == 403:
+        print('Authorization Error: Bearer token has expired or is invalid. Please update your authentication credentials and try again.')
+        sys.exit(1)
+
     # Increment the request-id after the request
     current_request_id += 1
 
@@ -55,8 +62,8 @@ def calculate_time_details(gen_time_str, disp_time_str):
 
     return gen_time.strftime('%m-%d %H:%M:%S'), disp_time.strftime('%m-%d %H:%M:%S'), time_left_str
 
-def alert_for_new_mobs(new_mobs, data, min_time_left, reward_ids):
-    """Alerts if new mobs meet the criteria of time left, reward IDs, and includes region information."""
+def alert_for_new_mobs(new_mobs, data, min_time_left, reward_ids, telegram_alerts_enabled):
+    """Alerts if new mobs meet the criteria of time left, reward IDs, and includes region and level information."""
     singapore_tz = pytz.timezone('Asia/Singapore')
     current_time = datetime.now(timezone.utc).astimezone(singapore_tz)
     alert_mobs = []
@@ -69,23 +76,22 @@ def alert_for_new_mobs(new_mobs, data, min_time_left, reward_ids):
                     gen_time_str, disp_time_str, time_left_str = calculate_time_details(battlefield["generatedTime"], battlefield["disappearedTime"])
                     disp_time = datetime.fromisoformat(battlefield["disappearedTime"][:-1]).replace(tzinfo=timezone.utc).astimezone(singapore_tz)
                     time_left = disp_time - current_time
-                    minutes_left = (time_left.seconds // 60) + time_left.days * 1440
+                    minutes_left = (time_left.seconds // 60) + time_left.days * 1440  # Convert days to minutes if any
 
                     if minutes_left < min_time_left and (not reward_ids or battlefield['rewardGroupId'] in reward_ids):
-                        alert_mobs.append({
-                            'id': battlefield['id'],
-                            'region': f"{region['region']} - {region_name}",
-                            'rewardGroupId': battlefield['rewardGroupId'],
-                            'timeLeftStr': time_left_str,
-                            'minutesLeft': minutes_left
-                        })
+                        alert_message = (
+                            f"Alert: New mob with ID: {battlefield['id']}, "
+                            f"Region: {region['region']} - {region_name}, "
+                            f"Level: {battlefield['level']}, "
+                            f"Reward Group ID: {battlefield['rewardGroupId']}, "
+                            f"Time Left: {minutes_left} minutes has spawned!"
+                        )
+                        print(alert_message)
+                        if telegram_alerts_enabled:
+                            send_telegram_message(alert_message)
 
-    if alert_mobs:
-        print("Alert: New mobs with less than specified time left and specific reward IDs have spawned:")
-        for mob in alert_mobs:
-            print(f"ID: {mob['id']}, Region: {mob['region']}, Reward Group ID: {mob['rewardGroupId']}, Time Left: {mob['timeLeftStr']} ({mob['minutesLeft']} minutes)")
 
-def print_battlefield_info(data, previous_ids, min_time_left, reward_ids):
+def print_battlefield_info(data, previous_ids, min_time_left, reward_ids, telegram_alerts_enabled):
     table = PrettyTable()
     table.field_names = ["ID", "Region", "Level", "Generated Time (SGT)", "Disappearing Time (SGT)", "Time Left", "Reward Group ID"]
     current_ids = []
@@ -102,7 +108,7 @@ def print_battlefield_info(data, previous_ids, min_time_left, reward_ids):
     new_mobs = [mob_id for mob_id in current_ids if mob_id not in previous_ids]
     if new_mobs:
         print("New mobs have spawned:", new_mobs)
-        alert_for_new_mobs(new_mobs, data, min_time_left, reward_ids)
+        alert_for_new_mobs(new_mobs, data, min_time_left, reward_ids, telegram_alerts_enabled)
 
     return current_ids
 
@@ -111,11 +117,12 @@ def main():
     previous_ids = []
     min_time_left = 70  # Time left threshold in minutes for alert
     reward_ids = []  # Empty list indicates no specific filter on reward IDs
+    telegram_alerts_enabled = os.getenv('TELEGRAM_ALERTS_ENABLED', 'False') == 'True'
 
     try:
         while True:
             data = get_battlefields()
-            previous_ids = print_battlefield_info(data, previous_ids, min_time_left, reward_ids)
+            previous_ids = print_battlefield_info(data, previous_ids, min_time_left, reward_ids, telegram_alerts_enabled)
 
             current_time = datetime.now()
             print("Last Updated:", current_time.strftime("%H:%M:%S"))
