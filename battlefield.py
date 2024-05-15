@@ -89,11 +89,11 @@ def alert_for_new_mobs(new_mobs, data, min_time_left, reward_ids, telegram_alert
 
                     if minutes_left < min_time_left and (not reward_ids or battlefield['rewardGroupId'] in reward_ids):
                         alert_message = (
-                            f"Alert: New mob Spawned! \n ID: {battlefield['id']}\n "
-                            f"Region: {region_name}\n "
-                            f"Level: {battlefield['level']}\n "
+                            f"Alert: New mob Spawned! \nID: {battlefield['id']}\n"
+                            f"Region: {region_name}\n"
+                            f"Level: {battlefield['level']}\n"
                             f"Time Left: {time_left_str}\n"
-                            f"Reward Group ID: {battlefield['rewardGroupId']}\n "
+                            f"Reward Group ID: {battlefield['rewardGroupId']}\n"
                             f"1st Prize: {first_place_prize}"
                            
                         )
@@ -134,7 +134,7 @@ def print_battlefield_info(data, previous_ids, min_time_left, reward_ids, telegr
 def main():
     """Main execution function."""
     previous_ids = []
-    min_time_left = 120  # Time left threshold in minutes for alert
+    min_time_left = 70  # Time left threshold in minutes for alert
     reward_ids = []  # Empty list indicates no specific filter on reward IDs
     telegram_alerts_enabled = os.getenv('TELEGRAM_ALERTS_ENABLED', 'False') == 'True'
 
