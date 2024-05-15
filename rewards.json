@@ -1,807 +1,324 @@
 {
-    "rewards_group_id": {
-        "0": [
-            [
-                "1 Purple Chest",
-                "20 Companion Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "30 Companion Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "10 Companion Ticket"
-            ],
-            [
-                "1 Green Chest"
-            ],
-            [
-                "700 Diamond"
-            ]
-        ],
-        "1": [
-            [
-                "1 Red Chest",
-                "30 Rune Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "20 Rune Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "20 Rune Ticket"
-            ],
-            [
-                "1 Green Chest",
-                "20 Rune Ticket"
-            ],
-            [
-                "1000 Diamond"
-            ]
-        ],
-        "2": [
-            [
-                "Novice Hat",
-                "1 Red Chest"
-            ],
-            [
-                "Novice Hat"
-            ],
-            [
-                "1 Red Chest",
-                "60 Pickup Companion Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "20 Pickup Companion Ticket"
-            ],
-            [
-                "2000 Diamond"
-            ]
-        ],
-        "3": [],
-        "4": [],
-        "5": [
-            [
-                "1 Red Chest"
-            ],
-            [
-                "1 Purple Chest",
-                "40 Rune Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "10 Rune Ticket"
-            ],
-            [
-                "1 Blue Chest"
-            ],
-            [
-                "1200 Diamond"
-            ]
-        ],
-        "6": [
-            [
-                "Novice Hat"
-            ],
-            [
-                "1 Red Chest",
-                "100 Dark Gem"
-            ],
-            [
-                "1 Purple Chest",
-                "100 Dark Gem"
-            ],
-            [
-                "1 Blue Chest",
-                "80 Dark Gem"
-            ],
-            [
-                "2500 Diamond"
-            ]
-        ],
-        "7": [
-            [
-                "Novice Hat",
-                "2 Red Chest",
-                "200 Pickup Companion Ticket"
-            ],
-            [
-                "Novice Hat",
-                "1 Red Chest",
-                "100 Pickup Companion Ticket"
-            ],
-            [
-                "Novice Hat",
-                "1 Purple Chest",
-                "50 Pickup Companion Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "30 Pickup Companion Ticket"
-            ],
-            [
-                "4000 Diamond"
-            ]
-        ],
-        "8": [
-            [
-                "Novice Hat"
-            ],
-            [
-                "1 Red Chest",
-                "100 Dark Gem"
-            ],
-            [
-                "1 Purple Chest",
-                "100 Dark Gem"
-            ],
-            [
-                "1 Blue Chest",
-                "80 Dark Gem"
-            ],
-            [
-                "2500 Diamond"
-            ]
-        ],
-        "9": [],
-        "10": [
-            [
-                "Novice Hat",
-                "1 Red Chest",
-                "100 Rune Ticket"
-            ],
-            [
-                "2 Purple Chest",
-                "100 Pickup Companion Ticket",
-                "100 Rune Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "50 Pickup Companion Ticket",
-                "50 Rune Ticket"
-            ],
-            [
-                "2 Blue Chest",
-                "30 Rune Ticket"
-            ],
-            [
-                "4000 Diamond"
-            ]
-        ],
-        "11": [
-            [
-                "4 Red Chest",
-                "500 Rune Ticket"
-            ],
-            [
-                "4 Purple Chest",
-                "200 Rune Ticket"
-            ],
-            [
-                "5 Blue Chest",
-                "150 Rune Ticket"
-            ],
-            [
-                "2 Blue Chest",
-                "100 Rune Ticket"
-            ],
-            [
-                "8000 Diamond"
-            ]
-        ],
-        "12": [],
-        "13": [],
-        "14": [],
-        "15": [
-            [
-                "1 Purple Chest",
-                "20 Companion Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "30 Companion Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "10 Companion Ticket"
-            ],
-            [
-                "1 Green Chest"
-            ],
-            [
-                "700 Diamond"
-            ]
-        ],
-        "16": [
-            [
-                "1 Red Chest",
-                "30 Rune Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "20 Rune Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "20 Rune Ticket"
-            ],
-            [
-                "1 Green Chest",
-                "20 Rune Ticket"
-            ],
-            [
-                "1000 Diamond"
-            ]
-        ],
-        "17": [
-            [
-                "Novice Gloves",
-                "1 Red Chest"
-            ],
-            [
-                "Novice Gloves"
-            ],
-            [
-                "1 Red Chest",
-                "60 Pickup Companion Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "20 Pickup Companion Ticket"
-            ],
-            [
-                "2000 Diamond"
-            ]
-        ],
-        "18": [],
-        "19": [],
-        "20": [
-            [
-                "1 Red Chest"
-            ],
-            [
-                "1 Purple Chest",
-                "40 Rune Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "10 Rune Ticket"
-            ],
-            [
-                "1 Blue Chest"
-            ],
-            [
-                "1200 Diamond"
-            ]
-        ],
-        "21": [
-            [
-                "Novice Gloves"
-            ],
-            [
-                "1 Red Chest",
-                "100 Dark Gem"
-            ],
-            [
-                "1 Purple Chest",
-                "100 Dark Gem"
-            ],
-            [
-                "1 Blue Chest",
-                "80 Dark Gem"
-            ],
-            [
-                "2500 Diamond"
-            ]
-        ],
-        "22": [
-            [
-                "Novice Gloves",
-                "2 Red Chest",
-                "200 Pickup Companion Ticket"
-            ],
-            [
-                "Novice Gloves",
-                "1 Red Chest",
-                "100 Pickup Companion Ticket"
-            ],
-            [
-                "Novice Gloves",
-                "1 Purple Chest",
-                "50 Pickup Companion Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "30 Pickup Companion Ticket"
-            ],
-            [
-                "4000 Diamond"
-            ]
-        ],
-        "23": [],
-        "24": [],
-        "25": [
-            [
-                "Novice Gloves",
-                "1 Red Chest",
-                "100 Rune Ticket"
-            ],
-            [
-                "2 Purple Chest",
-                "100 Pickup Companion Ticket",
-                "100 Rune Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "50 Pickup Companion Ticket",
-                "50 Rune Ticket"
-            ],
-            [
-                "2 Blue Chest",
-                "30 Rune Ticket"
-            ],
-            [
-                "4000 Diamond"
-            ]
-        ],
-        "26": [
-            [
-                "4 Red Chest",
-                "500 Rune Ticket"
-            ],
-            [
-                "4 Purple Chest",
-                "200 Rune Ticket"
-            ],
-            [
-                "5 Blue Chest",
-                "150 Rune Ticket"
-            ],
-            [
-                "2 Blue Chest",
-                "100 Rune Ticket"
-            ],
-            [
-                "8000 Diamond"
-            ]
-        ],
-        "27": [],
-        "28": [],
-        "29": [],
-        "30": [
-            [
-                "1 Purple Chest",
-                "20 Companion Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "30 Companion Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "10 Companion Ticket"
-            ],
-            [
-                "1 Green Chest"
-            ],
-            [
-                "700 Diamond"
-            ]
-        ],
-        "31": [
-            [
-                "1 Red Chest",
-                "30 Rune Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "20 Rune Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "20 Rune Ticket"
-            ],
-            [
-                "1 Green Chest",
-                "20 Rune Ticket"
-            ],
-            [
-                "1000 Diamond"
-            ]
-        ],
-        "32": [
-            [
-                "Novice Boots",
-                "1 Red Chest"
-            ],
-            [
-                "Novice Boots"
-            ],
-            [
-                "1 Red Chest",
-                "60 Pickup Companion Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "20 Pickup Companion Ticket"
-            ],
-            [
-                "2000 Diamond"
-            ]
-        ],
-        "33": [],
-        "34": [],
-        "35": [
-            [
-                "1 Red Chest"
-            ],
-            [
-                "1 Purple Chest",
-                "40 Rune Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "10 Rune Ticket"
-            ],
-            [
-                "1 Blue Chest"
-            ],
-            [
-                "1200 Diamond"
-            ]
-        ],
-        "36": [
-            [
-                "Novice Boots"
-            ],
-            [
-                "1 Red Chest",
-                "100 Dark Gem"
-            ],
-            [
-                "1 Purple Chest",
-                "100 Dark Gem"
-            ],
-            [
-                "1 Blue Chest",
-                "80 Dark Gem"
-            ],
-            [
-                "2500 Diamond"
-            ]
-        ],
-        "37": [
-            [
-                "Novice Boots",
-                "2 Red Chest",
-                "200 Pickup Companion Ticket"
-            ],
-            [
-                "Novice Boots",
-                "1 Red Chest",
-                "100 Pickup Companion Ticket"
-            ],
-            [
-                "Novice Boots",
-                "1 Purple Chest",
-                "50 Pickup Companion Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "30 Pickup Companion Ticket"
-            ],
-            [
-                "4000 Diamond"
-            ]
-        ],
-        "38": [],
-        "39": [],
-        "40": [
-            [
-                "Novice Boots",
-                "1 Red Chest",
-                "100 Rune Ticket"
-            ],
-            [
-                "2 Purple Chest",
-                "100 Pickup Companion Ticket",
-                "100 Rune Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "50 Pickup Companion Ticket",
-                "50 Rune Ticket"
-            ],
-            [
-                "2 Blue Chest",
-                "30 Rune Ticket"
-            ],
-            [
-                "4000 Diamond"
-            ]
-        ],
-        "41": [
-            [
-                "4 Red Chest",
-                "500 Rune Ticket"
-            ],
-            [
-                "4 Purple Chest",
-                "200 Rune Ticket"
-            ],
-            [
-                "5 Blue Chest",
-                "150 Rune Ticket"
-            ],
-            [
-                "2 Blue Chest",
-                "100 Rune Ticket"
-            ],
-            [
-                "8000 Diamond"
-            ]
-        ],
-        "42": [],
-        "43": [],
-        "44": [],
-        "45": [
-            [
-                "1 Purple Chest",
-                "20 Companion Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "30 Companion Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "10 Companion Ticket"
-            ],
-            [
-                "1 Green Chest"
-            ],
-            [
-                "700 Diamond"
-            ]
-        ],
-        "46": [
-            [
-                "1 Red Chest",
-                "30 Rune Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "20 Rune Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "20 Rune Ticket"
-            ],
-            [
-                "1 Green Chest",
-                "20 Rune Ticket"
-            ],
-            [
-                "1000 Diamond"
-            ]
-        ],
-        "47": [
-            [
-                "Novice Scarf",
-                "1 Red Chest"
-            ],
-            [
-                "Novice Scarf"
-            ],
-            [
-                "1 Red Chest",
-                "60 Pickup Companion Ticket"
-            ],
-            [
-                "1 Blue Chest",
-                "20 Pickup Companion Ticket"
-            ],
-            [
-                "2000 Diamond"
-            ]
-        ],
-        "48": [],
-        "49": [],
-        "50": [
-            [
-                "1 Red Chest"
-            ],
-            [
-                "1 Purple Chest",
-                "40 Rune Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "10 Rune Ticket"
-            ],
-            [
-                "1 Blue Chest"
-            ],
-            [
-                "1200 Diamond"
-            ]
-        ],
-        "51": [
-            [
-                "Novice Scarf"
-            ],
-            [
-                "1 Red Chest",
-                "100 Dark Gem"
-            ],
-            [
-                "1 Purple Chest",
-                "100 Dark Gem"
-            ],
-            [
-                "1 Blue Chest",
-                "80 Dark Gem"
-            ],
-            [
-                "2500 Diamond"
-            ]
-        ],
-        "52": [
-            [
-                "Novice Scarf",
-                "2 Red Chest",
-                "200 Pickup Companion Ticket"
-            ],
-            [
-                "Novice Scarf",
-                "1 Red Chest",
-                "100 Pickup Companion Ticket"
-            ],
-            [
-                "Novice Scarf",
-                "1 Purple Chest",
-                "50 Pickup Companion Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "30 Pickup Companion Ticket"
-            ],
-            [
-                "4000 Diamond"
-            ]
-        ],
-        "53": [],
-        "54": [],
-        "55": [
-            [
-                "Novice Scarf",
-                "1 Red Chest",
-                "100 Rune Ticket"
-            ],
-            [
-                "2 Purple Chest",
-                "100 Pickup Companion Ticket",
-                "100 Rune Ticket"
-            ],
-            [
-                "1 Purple Chest",
-                "50 Pickup Companion Ticket",
-                "50 Rune Ticket"
-            ],
-            [
-                "2 Blue Chest",
-                "30 Rune Ticket"
-            ],
-            [
-                "4000 Diamond"
-            ]
-        ],
-        "56": [
-            [
-                "4 Red Chest",
-                "500 Rune Ticket"
-            ],
-            [
-                "4 Purple Chest",
-                "200 Rune Ticket"
-            ],
-            [
-                "5 Blue Chest",
-                "150 Rune Ticket"
-            ],
-            [
-                "2 Blue Chest",
-                "100 Rune Ticket"
-            ],
-            [
-                "8000 Diamond"
-            ]
-        ],
-        "57": [],
-        "58": [],
-        "59": [],
-        "60": [
-            [
-                "4 Red Chest"
-            ],
-            [
-                "2 Red Chest"
-            ],
-            [
-                "1 Red Chest"
-            ],
-            [
-                "1 Purple Chest"
-            ],
-            [
-                "2500 Diamond"
-            ]
-        ],
-        "61": [],
-        "62": [],
-        "63": [],
-        "64": [
-            [
-                "4 Red Chest"
-            ],
-            [
-                "2 Red Chest"
-            ],
-            [
-                "1 Red Chest"
-            ],
-            [
-                "1 Purple Chest"
-            ],
-            [
-                "2500 Diamond"
-            ]
-        ],
-        "65": [],
-        "66": [],
-        "67": [],
-        "68": [
-            [
-                "4 Red Chest"
-            ],
-            [
-                "2 Red Chest"
-            ],
-            [
-                "1 Red Chest"
-            ],
-            [
-                "1 Purple Chest"
-            ],
-            [
-                "2500 Diamond"
-            ]
-        ],
-        "69": [],
-        "70": [],
-        "71": [],
-        "72": [
-            [
-                "4 Red Chest"
-            ],
-            [
-                "2 Red Chest"
-            ],
-            [
-                "1 Red Chest"
-            ],
-            [
-                "1 Purple Chest"
-            ],
-            [
-                "2500 Diamond"
-            ]
-        ],
-        "73": [],
-        "74": [],
-        "75": []
-    }
+  "0": [
+    ["1 Purple Chest", "20 Companion Ticket"],
+    ["1 Blue Chest", "30 Companion Ticket"],
+    ["1 Blue Chest", "10 Companion Ticket"],
+    ["1 Green Chest"],
+    ["700 Diamond"]
+  ],
+  "1": [
+    ["1 Red Chest", "30 Rune Ticket"],
+    ["1 Purple Chest", "20 Rune Ticket"],
+    ["1 Blue Chest", "20 Rune Ticket"],
+    ["1 Green Chest", "20 Rune Ticket"],
+    ["1000 Diamond"]
+  ],
+  "2": [
+    ["Novice Hat", "1 Red Chest"],
+    ["Novice Hat"],
+    ["1 Red Chest", "60 Pickup Companion Ticket"],
+    ["1 Blue Chest", "20 Pickup Companion Ticket"],
+    ["2000 Diamond"]
+  ],
+  "3": [],
+  "4": [],
+  "5": [
+    ["1 Red Chest"],
+    ["1 Purple Chest", "40 Rune Ticket"],
+    ["1 Purple Chest", "10 Rune Ticket"],
+    ["1 Blue Chest"],
+    ["1200 Diamond"]
+  ],
+  "6": [
+    ["Novice Hat"],
+    ["1 Red Chest", "100 Dark Gem"],
+    ["1 Purple Chest", "100 Dark Gem"],
+    ["1 Blue Chest", "80 Dark Gem"],
+    ["2500 Diamond"]
+  ],
+  "7": [
+    ["Novice Hat", "2 Red Chest", "200 Pickup Companion Ticket"],
+    ["Novice Hat", "1 Red Chest", "100 Pickup Companion Ticket"],
+    ["Novice Hat", "1 Purple Chest", "50 Pickup Companion Ticket"],
+    ["1 Purple Chest", "30 Pickup Companion Ticket"],
+    ["4000 Diamond"]
+  ],
+  "8": [
+    ["Novice Hat"],
+    ["1 Red Chest", "100 Dark Gem"],
+    ["1 Purple Chest", "100 Dark Gem"],
+    ["1 Blue Chest", "80 Dark Gem"],
+    ["2500 Diamond"]
+  ],
+  "9": [],
+  "10": [
+    ["Novice Hat", "1 Red Chest", "100 Rune Ticket"],
+    ["2 Purple Chest", "100 Pickup Companion Ticket", "100 Rune Ticket"],
+    ["1 Purple Chest", "50 Pickup Companion Ticket", "50 Rune Ticket"],
+    ["2 Blue Chest", "30 Rune Ticket"],
+    ["4000 Diamond"]
+  ],
+  "11": [
+    ["4 Red Chest", "500 Rune Ticket"],
+    ["4 Purple Chest", "200 Rune Ticket"],
+    ["5 Blue Chest", "150 Rune Ticket"],
+    ["2 Blue Chest", "100 Rune Ticket"],
+    ["8000 Diamond"]
+  ],
+  "12": [],
+  "13": [],
+  "14": [],
+  "15": [
+    ["1 Purple Chest", "20 Companion Ticket"],
+    ["1 Blue Chest", "30 Companion Ticket"],
+    ["1 Blue Chest", "10 Companion Ticket"],
+    ["1 Green Chest"],
+    ["700 Diamond"]
+  ],
+  "16": [
+    ["1 Red Chest", "30 Rune Ticket"],
+    ["1 Purple Chest", "20 Rune Ticket"],
+    ["1 Blue Chest", "20 Rune Ticket"],
+    ["1 Green Chest", "20 Rune Ticket"],
+    ["1000 Diamond"]
+  ],
+  "17": [
+    ["Novice Gloves", "1 Red Chest"],
+    ["Novice Gloves"],
+    ["1 Red Chest", "60 Pickup Companion Ticket"],
+    ["1 Blue Chest", "20 Pickup Companion Ticket"],
+    ["2000 Diamond"]
+  ],
+  "18": [],
+  "19": [],
+  "20": [
+    ["1 Red Chest"],
+    ["1 Purple Chest", "40 Rune Ticket"],
+    ["1 Purple Chest", "10 Rune Ticket"],
+    ["1 Blue Chest"],
+    ["1200 Diamond"]
+  ],
+  "21": [
+    ["Novice Gloves"],
+    ["1 Red Chest", "100 Dark Gem"],
+    ["1 Purple Chest", "100 Dark Gem"],
+    ["1 Blue Chest", "80 Dark Gem"],
+    ["2500 Diamond"]
+  ],
+  "22": [
+    ["Novice Gloves", "2 Red Chest", "200 Pickup Companion Ticket"],
+    ["Novice Gloves", "1 Red Chest", "100 Pickup Companion Ticket"],
+    ["Novice Gloves", "1 Purple Chest", "50 Pickup Companion Ticket"],
+    ["1 Purple Chest", "30 Pickup Companion Ticket"],
+    ["4000 Diamond"]
+  ],
+  "23": [],
+  "24": [],
+  "25": [
+    ["Novice Gloves", "1 Red Chest", "100 Rune Ticket"],
+    ["2 Purple Chest", "100 Pickup Companion Ticket", "100 Rune Ticket"],
+    ["1 Purple Chest", "50 Pickup Companion Ticket", "50 Rune Ticket"],
+    ["2 Blue Chest", "30 Rune Ticket"],
+    ["4000 Diamond"]
+  ],
+  "26": [
+    ["4 Red Chest", "500 Rune Ticket"],
+    ["4 Purple Chest", "200 Rune Ticket"],
+    ["5 Blue Chest", "150 Rune Ticket"],
+    ["2 Blue Chest", "100 Rune Ticket"],
+    ["8000 Diamond"]
+  ],
+  "27": [],
+  "28": [],
+  "29": [],
+  "30": [
+    ["1 Purple Chest", "20 Companion Ticket"],
+    ["1 Blue Chest", "30 Companion Ticket"],
+    ["1 Blue Chest", "10 Companion Ticket"],
+    ["1 Green Chest"],
+    ["700 Diamond"]
+  ],
+  "31": [
+    ["1 Red Chest", "30 Rune Ticket"],
+    ["1 Purple Chest", "20 Rune Ticket"],
+    ["1 Blue Chest", "20 Rune Ticket"],
+    ["1 Green Chest", "20 Rune Ticket"],
+    ["1000 Diamond"]
+  ],
+  "32": [
+    ["Novice Boots", "1 Red Chest"],
+    ["Novice Boots"],
+    ["1 Red Chest", "60 Pickup Companion Ticket"],
+    ["1 Blue Chest", "20 Pickup Companion Ticket"],
+    ["2000 Diamond"]
+  ],
+  "33": [],
+  "34": [],
+  "35": [
+    ["1 Red Chest"],
+    ["1 Purple Chest", "40 Rune Ticket"],
+    ["1 Purple Chest", "10 Rune Ticket"],
+    ["1 Blue Chest"],
+    ["1200 Diamond"]
+  ],
+  "36": [
+    ["Novice Boots"],
+    ["1 Red Chest", "100 Dark Gem"],
+    ["1 Purple Chest", "100 Dark Gem"],
+    ["1 Blue Chest", "80 Dark Gem"],
+    ["2500 Diamond"]
+  ],
+  "37": [
+    ["Novice Boots", "2 Red Chest", "200 Pickup Companion Ticket"],
+    ["Novice Boots", "1 Red Chest", "100 Pickup Companion Ticket"],
+    ["Novice Boots", "1 Purple Chest", "50 Pickup Companion Ticket"],
+    ["1 Purple Chest", "30 Pickup Companion Ticket"],
+    ["4000 Diamond"]
+  ],
+  "38": [],
+  "39": [],
+  "40": [
+    ["Novice Boots", "1 Red Chest", "100 Rune Ticket"],
+    ["2 Purple Chest", "100 Pickup Companion Ticket", "100 Rune Ticket"],
+    ["1 Purple Chest", "50 Pickup Companion Ticket", "50 Rune Ticket"],
+    ["2 Blue Chest", "30 Rune Ticket"],
+    ["4000 Diamond"]
+  ],
+  "41": [
+    ["4 Red Chest", "500 Rune Ticket"],
+    ["4 Purple Chest", "200 Rune Ticket"],
+    ["5 Blue Chest", "150 Rune Ticket"],
+    ["2 Blue Chest", "100 Rune Ticket"],
+    ["8000 Diamond"]
+  ],
+  "42": [],
+  "43": [],
+  "44": [],
+  "45": [
+    ["1 Purple Chest", "20 Companion Ticket"],
+    ["1 Blue Chest", "30 Companion Ticket"],
+    ["1 Blue Chest", "10 Companion Ticket"],
+    ["1 Green Chest"],
+    ["700 Diamond"]
+  ],
+  "46": [
+    ["1 Red Chest", "30 Rune Ticket"],
+    ["1 Purple Chest", "20 Rune Ticket"],
+    ["1 Blue Chest", "20 Rune Ticket"],
+    ["1 Green Chest", "20 Rune Ticket"],
+    ["1000 Diamond"]
+  ],
+  "47": [
+    ["Novice Scarf", "1 Red Chest"],
+    ["Novice Scarf"],
+    ["1 Red Chest", "60 Pickup Companion Ticket"],
+    ["1 Blue Chest", "20 Pickup Companion Ticket"],
+    ["2000 Diamond"]
+  ],
+  "48": [],
+  "49": [],
+  "50": [
+    ["1 Red Chest"],
+    ["1 Purple Chest", "40 Rune Ticket"],
+    ["1 Purple Chest", "10 Rune Ticket"],
+    ["1 Blue Chest"],
+    ["1200 Diamond"]
+  ],
+  "51": [
+    ["Novice Scarf"],
+    ["1 Red Chest", "100 Dark Gem"],
+    ["1 Purple Chest", "100 Dark Gem"],
+    ["1 Blue Chest", "80 Dark Gem"],
+    ["2500 Diamond"]
+  ],
+  "52": [
+    ["Novice Scarf", "2 Red Chest", "200 Pickup Companion Ticket"],
+    ["Novice Scarf", "1 Red Chest", "100 Pickup Companion Ticket"],
+    ["Novice Scarf", "1 Purple Chest", "50 Pickup Companion Ticket"],
+    ["1 Purple Chest", "30 Pickup Companion Ticket"],
+    ["4000 Diamond"]
+  ],
+  "53": [],
+  "54": [],
+  "55": [
+    ["Novice Scarf", "1 Red Chest", "100 Rune Ticket"],
+    ["2 Purple Chest", "100 Pickup Companion Ticket", "100 Rune Ticket"],
+    ["1 Purple Chest", "50 Pickup Companion Ticket", "50 Rune Ticket"],
+    ["2 Blue Chest", "30 Rune Ticket"],
+    ["4000 Diamond"]
+  ],
+  "56": [
+    ["4 Red Chest", "500 Rune Ticket"],
+    ["4 Purple Chest", "200 Rune Ticket"],
+    ["5 Blue Chest", "150 Rune Ticket"],
+    ["2 Blue Chest", "100 Rune Ticket"],
+    ["8000 Diamond"]
+  ],
+  "57": [],
+  "58": [],
+  "59": [],
+  "60": [
+    ["4 Red Chest"],
+    ["2 Red Chest"],
+    ["1 Red Chest"],
+    ["1 Purple Chest"],
+    ["2500 Diamond"]
+  ],
+  "61": [
+    ["5 Red Chest", "5 Mount Ticket"],
+    ["4 Red Chest", "2 Mount Ticket"],
+    ["3 Red Chest"],
+    ["1 Red Chest"],
+    ["4000 Diamond"]
+  ],
+  "62": [],
+  "63": [],
+  "64": [
+    ["4 Red Chest"],
+    ["2 Red Chest"],
+    ["1 Red Chest"],
+    ["1 Purple Chest"],
+    ["2500 Diamond"]
+  ],
+  "65": [
+    ["5 Red Chest", "5 Mount Ticket"],
+    ["4 Red Chest", "2 Mount Ticket"],
+    ["3 Red Chest"],
+    ["1 Red Chest"],
+    ["4000 Diamond"]
+  ],
+  "66": [],
+  "67": [],
+  "68": [
+    ["4 Red Chest"],
+    ["2 Red Chest"],
+    ["1 Red Chest"],
+    ["1 Purple Chest"],
+    ["2500 Diamond"]
+  ],
+  "69": [
+    ["5 Red Chest", "5 Mount Ticket"],
+    ["4 Red Chest", "2 Mount Ticket"],
+    ["3 Red Chest"],
+    ["1 Red Chest"],
+    ["4000 Diamond"]
+  ],
+  "70": [],
+  "71": [],
+  "72": [
+    ["4 Red Chest"],
+    ["2 Red Chest"],
+    ["1 Red Chest"],
+    ["1 Purple Chest"],
+    ["2500 Diamond"]
+  ],
+  "73": [
+    ["5 Red Chest", "5 Mount Ticket"],
+    ["4 Red Chest", "2 Mount Ticket"],
+    ["3 Red Chest"],
+    ["1 Red Chest"],
+    ["4000 Diamond"]
+  ],
+  "74": [],
+  "75": []
 }
