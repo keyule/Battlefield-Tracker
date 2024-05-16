@@ -16,8 +16,8 @@
   "2": [
     ["Novice Hat", "1 Red Chest"],
     ["Novice Hat"],
-    ["1 Red Chest", "60 Pickup Companion Ticket"],
-    ["1 Blue Chest", "20 Pickup Companion Ticket"],
+    ["1 Red Chest", "60 Pickup Ticket"],
+    ["1 Blue Chest", "20 Pickup Ticket"],
     ["2000 Diamond"]
   ],
   "3": [],
@@ -37,10 +37,10 @@
     ["2500 Diamond"]
   ],
   "7": [
-    ["Novice Hat", "2 Red Chest", "200 Pickup Companion Ticket"],
-    ["Novice Hat", "1 Red Chest", "100 Pickup Companion Ticket"],
-    ["Novice Hat", "1 Purple Chest", "50 Pickup Companion Ticket"],
-    ["1 Purple Chest", "30 Pickup Companion Ticket"],
+    ["Novice Hat", "2 Red Chest", "200 Pickup Ticket"],
+    ["Novice Hat", "1 Red Chest", "100 Pickup Ticket"],
+    ["Novice Hat", "1 Purple Chest", "50 Pickup Ticket"],
+    ["1 Purple Chest", "30 Pickup Ticket"],
     ["4000 Diamond"]
   ],
   "8": [
@@ -53,8 +53,8 @@
   "9": [],
   "10": [
     ["Novice Hat", "1 Red Chest", "100 Rune Ticket"],
-    ["2 Purple Chest", "100 Pickup Companion Ticket", "100 Rune Ticket"],
-    ["1 Purple Chest", "50 Pickup Companion Ticket", "50 Rune Ticket"],
+    ["2 Purple Chest", "100 Pickup Ticket", "100 Rune Ticket"],
+    ["1 Purple Chest", "50 Pickup Ticket", "50 Rune Ticket"],
     ["2 Blue Chest", "30 Rune Ticket"],
     ["4000 Diamond"]
   ],
@@ -85,8 +85,8 @@
   "17": [
     ["Novice Gloves", "1 Red Chest"],
     ["Novice Gloves"],
-    ["1 Red Chest", "60 Pickup Companion Ticket"],
-    ["1 Blue Chest", "20 Pickup Companion Ticket"],
+    ["1 Red Chest", "60 Pickup Ticket"],
+    ["1 Blue Chest", "20 Pickup Ticket"],
     ["2000 Diamond"]
   ],
   "18": [],
@@ -106,18 +106,18 @@
     ["2500 Diamond"]
   ],
   "22": [
-    ["Novice Gloves", "2 Red Chest", "200 Pickup Companion Ticket"],
-    ["Novice Gloves", "1 Red Chest", "100 Pickup Companion Ticket"],
-    ["Novice Gloves", "1 Purple Chest", "50 Pickup Companion Ticket"],
-    ["1 Purple Chest", "30 Pickup Companion Ticket"],
+    ["Novice Gloves", "2 Red Chest", "200 Pickup Ticket"],
+    ["Novice Gloves", "1 Red Chest", "100 Pickup Ticket"],
+    ["Novice Gloves", "1 Purple Chest", "50 Pickup Ticket"],
+    ["1 Purple Chest", "30 Pickup Ticket"],
     ["4000 Diamond"]
   ],
   "23": [],
   "24": [],
   "25": [
     ["Novice Gloves", "1 Red Chest", "100 Rune Ticket"],
-    ["2 Purple Chest", "100 Pickup Companion Ticket", "100 Rune Ticket"],
-    ["1 Purple Chest", "50 Pickup Companion Ticket", "50 Rune Ticket"],
+    ["2 Purple Chest", "100 Pickup Ticket", "100 Rune Ticket"],
+    ["1 Purple Chest", "50 Pickup Ticket", "50 Rune Ticket"],
     ["2 Blue Chest", "30 Rune Ticket"],
     ["4000 Diamond"]
   ],
@@ -148,8 +148,8 @@
   "32": [
     ["Novice Boots", "1 Red Chest"],
     ["Novice Boots"],
-    ["1 Red Chest", "60 Pickup Companion Ticket"],
-    ["1 Blue Chest", "20 Pickup Companion Ticket"],
+    ["1 Red Chest", "60 Pickup Ticket"],
+    ["1 Blue Chest", "20 Pickup Ticket"],
     ["2000 Diamond"]
   ],
   "33": [],
@@ -169,18 +169,18 @@
     ["2500 Diamond"]
   ],
   "37": [
-    ["Novice Boots", "2 Red Chest", "200 Pickup Companion Ticket"],
-    ["Novice Boots", "1 Red Chest", "100 Pickup Companion Ticket"],
-    ["Novice Boots", "1 Purple Chest", "50 Pickup Companion Ticket"],
-    ["1 Purple Chest", "30 Pickup Companion Ticket"],
+    ["Novice Boots", "2 Red Chest", "200 Pickup Ticket"],
+    ["Novice Boots", "1 Red Chest", "100 Pickup Ticket"],
+    ["Novice Boots", "1 Purple Chest", "50 Pickup Ticket"],
+    ["1 Purple Chest", "30 Pickup Ticket"],
     ["4000 Diamond"]
   ],
   "38": [],
   "39": [],
   "40": [
     ["Novice Boots", "1 Red Chest", "100 Rune Ticket"],
-    ["2 Purple Chest", "100 Pickup Companion Ticket", "100 Rune Ticket"],
-    ["1 Purple Chest", "50 Pickup Companion Ticket", "50 Rune Ticket"],
+    ["2 Purple Chest", "100 Pickup Ticket", "100 Rune Ticket"],
+    ["1 Purple Chest", "50 Pickup Ticket", "50 Rune Ticket"],
     ["2 Blue Chest", "30 Rune Ticket"],
     ["4000 Diamond"]
   ],
@@ -211,8 +211,8 @@
   "47": [
     ["Novice Scarf", "1 Red Chest"],
     ["Novice Scarf"],
-    ["1 Red Chest", "60 Pickup Companion Ticket"],
-    ["1 Blue Chest", "20 Pickup Companion Ticket"],
+    ["1 Red Chest", "60 Pickup Ticket"],
+    ["1 Blue Chest", "20 Pickup Ticket"],
     ["2000 Diamond"]
   ],
   "48": [],
@@ -232,18 +232,18 @@
     ["2500 Diamond"]
   ],
   "52": [
-    ["Novice Scarf", "2 Red Chest", "200 Pickup Companion Ticket"],
-    ["Novice Scarf", "1 Red Chest", "100 Pickup Companion Ticket"],
-    ["Novice Scarf", "1 Purple Chest", "50 Pickup Companion Ticket"],
-    ["1 Purple Chest", "30 Pickup Companion Ticket"],
+    ["Novice Scarf", "2 Red Chest", "200 Pickup Ticket"],
+    ["Novice Scarf", "1 Red Chest", "100 Pickup Ticket"],
+    ["Novice Scarf", "1 Purple Chest", "50 Pickup Ticket"],
+    ["1 Purple Chest", "30 Pickup Ticket"],
     ["4000 Diamond"]
   ],
   "53": [],
   "54": [],
   "55": [
     ["Novice Scarf", "1 Red Chest", "100 Rune Ticket"],
-    ["2 Purple Chest", "100 Pickup Companion Ticket", "100 Rune Ticket"],
-    ["1 Purple Chest", "50 Pickup Companion Ticket", "50 Rune Ticket"],
+    ["2 Purple Chest", "100 Pickup Ticket", "100 Rune Ticket"],
+    ["1 Purple Chest", "50 Pickup Ticket", "50 Rune Ticket"],
     ["2 Blue Chest", "30 Rune Ticket"],
     ["4000 Diamond"]
   ],
@@ -272,7 +272,13 @@
     ["4000 Diamond"]
   ],
   "62": [],
-  "63": [],
+  "63": [
+    ["15 Red Chest", "15 Mount Ticket"],
+    ["10 Red Chest"],
+    ["4 Red Chest"],
+    ["2 Red Chest"],
+    ["6000 Diamond"]
+  ],
   "64": [
     ["4 Red Chest"],
     ["2 Red Chest"],
@@ -288,7 +294,13 @@
     ["4000 Diamond"]
   ],
   "66": [],
-  "67": [],
+  "67": [
+    ["15 Red Chest", "15 Mount Ticket"],
+    ["10 Red Chest"],
+    ["4 Red Chest"],
+    ["2 Red Chest"],
+    ["6000 Diamond"]
+  ],
   "68": [
     ["4 Red Chest"],
     ["2 Red Chest"],
@@ -304,7 +316,13 @@
     ["4000 Diamond"]
   ],
   "70": [],
-  "71": [],
+  "71": [
+    ["15 Red Chest", "15 Mount Ticket"],
+    ["10 Red Chest"],
+    ["4 Red Chest"],
+    ["2 Red Chest"],
+    ["6000 Diamond"]
+  ],
   "72": [
     ["4 Red Chest"],
     ["2 Red Chest"],
@@ -320,5 +338,11 @@
     ["4000 Diamond"]
   ],
   "74": [],
-  "75": []
+  "75": [
+    ["15 Red Chest", "15 Mount Ticket"],
+    ["10 Red Chest"],
+    ["4 Red Chest"],
+    ["2 Red Chest"],
+    ["6000 Diamond"]
+  ]
 }
