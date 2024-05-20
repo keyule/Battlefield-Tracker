@@ -20,6 +20,7 @@ REQUEST_ID = int(os.getenv('REQUEST_ID'))
 BODY_HMAC = os.getenv('BODY_HMAC')
 TELEGRAM_ALERTS_ENABLED = os.getenv('TELEGRAM_ALERTS_ENABLED', 'False') == 'True'
 MIN_TIME_LEFT = 70  # Time left threshold in minutes for alert
+SLEEP_TIME = 300  # Sleep time in seconds (5 minutes)
 
 class Rewards:
     def __init__(self, rewards_file):
@@ -186,7 +187,7 @@ class Battlefield:
                     Alert.alert_for_new_mobs(new_mobs, self.rewards)
 
                 UI.print_last_updated()
-                time.sleep(300)  # Sleep for 5 minutes
+                time.sleep(SLEEP_TIME)
         except KeyboardInterrupt:
             UI.print_alert_message("Stopped by user.")
 
