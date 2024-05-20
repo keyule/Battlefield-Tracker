@@ -36,7 +36,7 @@ TELEGRAM_TOKEN=your_bot_token
 TELEGRAM_CHAT_ID=your_id_here
 TELEGRAM_ALERTS_ENABLED=False
 ```
-Replace your_bearer_token_here, your_body_hmac_here, and initial_request_id_value with your actual credentials and the initial request ID.
+Replace your_bearer_token_here(this is no more needed), your_body_hmac_here, and initial_request_id_value with your actual credentials and the initial request ID.
 
 You can leave the telegram stuff alone
 
@@ -47,7 +47,7 @@ For detailed instructions on how to obtain the BEARER_TOKEN, refer to our [Guide
 ## Usage
 To run the script, simply execute it from the command line:
 ```bash
-python battlefield.py
+python battlefield.py -token YOUR_BEARER_TOKEN_HERE
 ```
 
 ## Configuration
@@ -57,4 +57,10 @@ python battlefield.py
 
 These configurations can be adjusted directly in the script.
 
-.
+## Update (20/5/2024)
+- Refactored everything
+- New way to start the script
+- Now prompts you to update the token if it changes. 
+```bash
+Bearer token has expired or is invalid. Please enter a new bearer token:
+```
