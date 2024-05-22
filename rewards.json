@@ -112,7 +112,13 @@
     ["1 Purple Chest", "30 Pickup Ticket"],
     ["4000 Diamond"]
   ],
-  "23": [],
+  "23": [
+    ["Novice Gloves", "3 Red Chest", "400 Rune Ticket"],
+    ["Novice Gloves", "1 Red Chest", "100 Rune Ticket"],
+    ["Novice Gloves", "1 Purple Chest", "70 Rune Ticket"],
+    ["1 Purple Chest", "70 Rune Ticket"],
+    ["5000 Diamond"]
+  ],
   "24": [],
   "25": [
     ["Novice Gloves", "1 Red Chest", "100 Rune Ticket"],

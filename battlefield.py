@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 import time
 import sys
 from prettytable import PrettyTable
-from telegram_alert import send_telegram_message
+from telegram_alerts import send_telegram_message
 
 # Load environment variables
 load_dotenv()
@@ -20,7 +20,7 @@ REQUEST_ID = int(os.getenv('REQUEST_ID'))
 BODY_HMAC = os.getenv('BODY_HMAC')
 TELEGRAM_ALERTS_ENABLED = os.getenv('TELEGRAM_ALERTS_ENABLED', 'False') == 'True'
 MIN_TIME_LEFT = 70  # Time left threshold in minutes for alert
-SLEEP_TIME = 300  # Sleep time in seconds (5 minutes)
+SLEEP_TIME = 30  # Sleep time in seconds (5 minutes)
 
 class Rewards:
     def __init__(self, rewards_file):
@@ -102,12 +102,12 @@ class MobList:
         self.mobs = []
         self.previous_ids = []
 
-    def add_mob(self, mob):
-        self.mobs.append(mob)
+    def update_mobs(self, new_mobs):
+        self.previous_ids = [mob.mob_id for mob in self.mobs]
+        self.mobs = new_mobs
 
     def get_new_mobs(self):
         new_mobs = [mob for mob in self.mobs if mob.mob_id not in self.previous_ids]
-        self.previous_ids = [mob.mob_id for mob in self.mobs]
         return new_mobs
 
 class UI:
@@ -169,6 +169,7 @@ class Battlefield:
         try:
             while True:
                 data = self.api_manager.get_battlefields()
+                new_mobs = []
                 for region in data["regions"]:
                     region_name = REGION_MAP.get(region['region'], "Unknown")
                     for battlefield in region["battlefields"]:
@@ -179,7 +180,9 @@ class Battlefield:
                             disappeared_time=battlefield["disappearedTime"],
                             reward_group_id=battlefield['rewardGroupId']
                         )
-                        self.mob_list.add_mob(mob)
+                        new_mobs.append(mob)
+
+                self.mob_list.update_mobs(new_mobs)
 
                 UI.print_battlefield_info(self.mob_list, self.rewards)
                 new_mobs = self.mob_list.get_new_mobs()
