@@ -1,4 +1,3 @@
-import requests
 import os
 import argparse
 from dotenv import load_dotenv
@@ -6,8 +5,10 @@ import json
 import time
 import sys
 from prettytable import PrettyTable
+
 from telegram_alerts import send_telegram_message
 from utility import Utility
+from api_manager import ApiManager
 
 # Load environment variables
 load_dotenv()
@@ -33,36 +34,6 @@ class Rewards:
             return ', '.join(self.rewards_data[str(reward_group_id)][0])
         return "No data available"
 
-class ApiManager:
-    def __init__(self, request_id, bearer_token):
-        self.request_id = request_id
-        self.bearer_token = bearer_token
-
-    def update_bearer_token(self):
-        new_token = input("Bearer token has expired or is invalid. Please enter a new bearer token: ")
-        self.bearer_token = new_token
-
-    def get_battlefields(self):
-        url = 'https://gv.gameduo.net/battlefield/getAllRegions'
-        headers = {
-            'Authorization': f"Bearer {self.bearer_token}",
-            'bodyhmac': BODY_HMAC,
-            'Content-Type': 'application/json',
-            'Host': 'gv.gameduo.net',
-            'request-id': str(self.request_id),
-            'User-Agent': 'UnityPlayer/2021.3.33f1 (UnityWebRequest/1.0, libcurl/8.4.0-DEV)',
-            'X-Unity-Version': '2021.3.33f1',
-            'Content-Length': '2'
-        }
-
-        response = requests.post(url, headers=headers, json={})
-        if response.status_code == 403:
-            self.update_bearer_token()
-            return self.get_battlefields()  # Retry with the new token
-        
-        self.request_id += 1
-        return response.json()
-
 class Mob:
     def __init__(self, mob_id, region, level, disappeared_time, reward_group_id):
         self.mob_id = mob_id
@@ -75,14 +46,22 @@ class MobList:
     def __init__(self):
         self.mobs = []
         self.previous_ids = []
+        self.last_updated = None
 
     def update_mobs(self, new_mobs):
         self.previous_ids = [mob.mob_id for mob in self.mobs]
         self.mobs = new_mobs
+        self.last_updated = Utility.get_current_time()
 
     def get_new_mobs(self):
+        if self.last_updated is None:
+            # If last_updated is None, it's the first run, so don't count any mobs as new.
+            return []
         new_mobs = [mob for mob in self.mobs if mob.mob_id not in self.previous_ids]
         return new_mobs
+
+    def get_last_updated(self):
+        return self.last_updated
 
 class UI:
     @staticmethod
@@ -104,9 +83,8 @@ class UI:
         print(alert_message)
 
     @staticmethod
-    def print_last_updated():
-        current_time = Utility.get_current_time()
-        print("Last Updated:", current_time)
+    def print_last_updated(last_updated):
+        print("Last Updated:", last_updated)
 
 class Alert:
     @staticmethod
@@ -134,8 +112,8 @@ class Alert:
                     send_telegram_message(alert_message)
 
 class Battlefield:
-    def __init__(self, bearer_token):
-        self.api_manager = ApiManager(REQUEST_ID, bearer_token)
+    def __init__(self, request_id, bearer_token, body_hmac):
+        self.api_manager = ApiManager(request_id, bearer_token, body_hmac)
         self.mob_list = MobList()
         self.rewards = Rewards('rewards.json')
 
@@ -163,7 +141,8 @@ class Battlefield:
                 if new_mobs:
                     Alert.alert_for_new_mobs(new_mobs, self.rewards)
 
-                UI.print_last_updated()
+                last_updated = self.mob_list.get_last_updated()
+                UI.print_last_updated(last_updated)
                 time.sleep(SLEEP_TIME)
         except KeyboardInterrupt:
             UI.print_alert_message("Stopped by user.")
@@ -173,7 +152,7 @@ def main():
     parser.add_argument('-token', '--bearer_token', required=True, help='Bearer token for authentication')
     args = parser.parse_args()
 
-    battlefield = Battlefield(args.bearer_token)
+    battlefield = Battlefield(REQUEST_ID, args.bearer_token, BODY_HMAC)
     battlefield.run()
 
 if __name__ == "__main__":
