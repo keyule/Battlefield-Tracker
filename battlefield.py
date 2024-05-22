@@ -2,20 +2,18 @@ import requests
 import os
 import argparse
 from dotenv import load_dotenv
-import pytz
 import json
-from datetime import datetime, timezone
 import time
 import sys
 from prettytable import PrettyTable
 from telegram_alerts import send_telegram_message
+from utility import Utility
 
 # Load environment variables
 load_dotenv()
 
 # Constants
 REGION_MAP = {0: "Pirate", 1: "Cat", 2: "Wolf", 3: "Food"}
-SINGAPORE_TZ = pytz.timezone('Asia/Singapore')
 REQUEST_ID = int(os.getenv('REQUEST_ID'))
 BODY_HMAC = os.getenv('BODY_HMAC')
 TELEGRAM_ALERTS_ENABLED = os.getenv('TELEGRAM_ALERTS_ENABLED', 'False') == 'True'
@@ -65,30 +63,6 @@ class ApiManager:
         self.request_id += 1
         return response.json()
 
-class Utility:
-    @staticmethod
-    def convert_to_sgt(disp_time_str):
-        """Convert a given time string to Singapore Time."""
-        return datetime.fromisoformat(disp_time_str[:-1]).replace(tzinfo=timezone.utc).astimezone(SINGAPORE_TZ)
-
-    @staticmethod
-    def calculate_time_difference(disp_time):
-        """Calculate the time difference from the current time to the given time."""
-        current_time = datetime.now(timezone.utc).astimezone(SINGAPORE_TZ)
-        return disp_time - current_time
-
-    @staticmethod
-    def format_time_left(time_left):
-        """Format the time left into a human-readable string."""
-        hours_left = time_left.seconds // 3600
-        minutes_left_only = (time_left.seconds % 3600) // 60
-        return f"{hours_left} hrs {minutes_left_only} min" if hours_left > 0 else f"{minutes_left_only} min"
-
-    @staticmethod
-    def calculate_minutes_left(time_left):
-        """Calculate the total minutes left from the time difference."""
-        return (time_left.seconds // 60) + time_left.days * 1440  # Convert days to minutes if any
-
 class Mob:
     def __init__(self, mob_id, region, level, disappeared_time, reward_group_id):
         self.mob_id = mob_id
@@ -131,8 +105,8 @@ class UI:
 
     @staticmethod
     def print_last_updated():
-        current_time = datetime.now()
-        print("Last Updated:", current_time.strftime("%H:%M:%S"))
+        current_time = Utility.get_current_time()
+        print("Last Updated:", current_time)
 
 class Alert:
     @staticmethod
