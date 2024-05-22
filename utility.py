@@ -26,3 +26,8 @@ class Utility:
     def calculate_minutes_left(time_left):
         """Calculate the total minutes left from the time difference."""
         return (time_left.seconds // 60) + time_left.days * 1440  # Convert days to minutes if any
+
+    @staticmethod
+    def get_current_time():
+        """Return the current time."""
+        return datetime.now().strftime("%H:%M:%S")
