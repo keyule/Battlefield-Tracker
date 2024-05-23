@@ -5,10 +5,10 @@ import json
 import time
 import sys
 from prettytable import PrettyTable
-
-from telegram_alerts import send_telegram_message
+from threading import Thread
 from utility import Utility
 from api_manager import ApiManager
+from telegram_bot import TelegramBot
 
 # Load environment variables
 load_dotenv()
@@ -17,9 +17,11 @@ load_dotenv()
 REGION_MAP = {0: "Pirate", 1: "Cat", 2: "Wolf", 3: "Food"}
 REQUEST_ID = int(os.getenv('REQUEST_ID'))
 BODY_HMAC = os.getenv('BODY_HMAC')
+TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
+TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 TELEGRAM_ALERTS_ENABLED = os.getenv('TELEGRAM_ALERTS_ENABLED', 'False') == 'True'
 MIN_TIME_LEFT = 70  # Time left threshold in minutes for alert
-SLEEP_TIME = 30  # Sleep time in seconds (5 minutes)
+SLEEP_TIME = 60  # Sleep time in seconds (5 minutes)
 
 class Rewards:
     def __init__(self, rewards_file):
@@ -63,6 +65,9 @@ class MobList:
     def get_last_updated(self):
         return self.last_updated
 
+    def get_current_mobs(self):
+        return self.mobs, self.last_updated
+
 class UI:
     @staticmethod
     def print_battlefield_info(mob_list, rewards):
@@ -88,7 +93,7 @@ class UI:
 
 class Alert:
     @staticmethod
-    def alert_for_new_mobs(new_mobs, rewards):
+    def alert_for_new_mobs(new_mobs, rewards, telegram_bot):
         for mob in new_mobs:
             disp_time = Utility.convert_to_sgt(mob.disappeared_time)
             time_left = Utility.calculate_time_difference(disp_time)
@@ -109,17 +114,19 @@ class Alert:
                 )
                 UI.print_alert_message(alert_message)
                 if TELEGRAM_ALERTS_ENABLED:
-                    send_telegram_message(alert_message)
+                    telegram_bot.send_alert(alert_message)
 
 class Battlefield:
-    def __init__(self, request_id, bearer_token, body_hmac):
+    def __init__(self, request_id, bearer_token, body_hmac, mob_list, telegram_bot):
         self.api_manager = ApiManager(request_id, bearer_token, body_hmac)
-        self.mob_list = MobList()
+        self.mob_list = mob_list
         self.rewards = Rewards('rewards.json')
+        self.telegram_bot = telegram_bot
+        self.running = True  # Add a running flag
 
     def run(self):
         try:
-            while True:
+            while self.running:
                 data = self.api_manager.get_battlefields()
                 new_mobs = []
                 for region in data["regions"]:
@@ -139,21 +146,53 @@ class Battlefield:
                 UI.print_battlefield_info(self.mob_list, self.rewards)
                 new_mobs = self.mob_list.get_new_mobs()
                 if new_mobs:
-                    Alert.alert_for_new_mobs(new_mobs, self.rewards)
+                    Alert.alert_for_new_mobs(new_mobs, self.rewards, self.telegram_bot)
 
                 last_updated = self.mob_list.get_last_updated()
                 UI.print_last_updated(last_updated)
                 time.sleep(SLEEP_TIME)
         except KeyboardInterrupt:
-            UI.print_alert_message("Stopped by user.")
+            self.stop()
+
+    def stop(self):
+        self.running = False
 
 def main():
     parser = argparse.ArgumentParser(description='Run the battlefield monitoring script.')
     parser.add_argument('-token', '--bearer_token', required=True, help='Bearer token for authentication')
     args = parser.parse_args()
 
-    battlefield = Battlefield(REQUEST_ID, args.bearer_token, BODY_HMAC)
-    battlefield.run()
+    mob_list = MobList()
+    telegram_bot = None
+
+    # Start the Telegram Bot
+    if TELEGRAM_ALERTS_ENABLED:
+        telegram_bot = TelegramBot(TELEGRAM_TOKEN, mob_list)
+        telegram_bot_thread = Thread(target=telegram_bot.start)
+        telegram_bot_thread.daemon = True
+        telegram_bot_thread.start()
+
+    battlefield = Battlefield(REQUEST_ID, args.bearer_token, BODY_HMAC, mob_list, telegram_bot)
+    battlefield_thread = Thread(target=battlefield.run)
+    battlefield_thread.daemon = True
+    battlefield_thread.start()
+
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("Shutdown requested...")
+        battlefield.stop()
+        if TELEGRAM_ALERTS_ENABLED:
+            telegram_bot.stop()
+
+    # Ensure all threads are joined
+    battlefield_thread.join(timeout=1.0)
+    if TELEGRAM_ALERTS_ENABLED:
+        telegram_bot_thread.join(timeout=1.0)
+
+    print("Successfully shutdown the service.")
 
 if __name__ == "__main__":
     main()
+
