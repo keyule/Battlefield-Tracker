@@ -160,9 +160,8 @@ class Battlefield:
     def stop(self):
         self.running = False
 
-def start_telegram_bot(bot):
-    """Function to run the bot, intended to be used as a threading target."""
-    bot.run()
+def run_battlefield(battlefield):
+    battlefield.run()
 
 def main():
     parser = argparse.ArgumentParser(description='Run the battlefield monitoring script.')
@@ -170,19 +169,22 @@ def main():
     args = parser.parse_args()
 
     mob_list = MobList()
-    telegram_bot = None
 
     if TELEGRAM_ALERTS_ENABLED:
         telegram_bot = TelegramBot(TELEGRAM_TOKEN, mob_list)
+    else:
+        telegram_bot = None
 
     battlefield = Battlefield(REQUEST_ID, args.bearer_token, BODY_HMAC, mob_list, telegram_bot)
-    battlefield_thread = Thread(target=battlefield.run)
+
+    # Start the battlefield monitoring in a separate thread
+    battlefield_thread = Thread(target=run_battlefield, args=(battlefield,))
     battlefield_thread.daemon = True
     battlefield_thread.start()
 
     if TELEGRAM_ALERTS_ENABLED:
         try:
-            telegram_bot.start()
+            telegram_bot.start()  # This runs the Telegram bot on the main thread
         except KeyboardInterrupt:
             print("Shutdown requested...")
             battlefield.stop()
@@ -202,5 +204,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-

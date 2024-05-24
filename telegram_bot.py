@@ -50,3 +50,8 @@ class TelegramBot:
 
     def start(self):
         asyncio.run(self.application.run_polling())
+
+    def stop(self):
+        # No explicit stop needed for the simplified version, 
+        # this is just a placeholder to maintain interface consistency
+        pass
