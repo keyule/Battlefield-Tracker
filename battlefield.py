@@ -4,14 +4,11 @@ from dotenv import load_dotenv
 import json
 import time
 import sys
-import threading
 import asyncio
 from prettytable import PrettyTable
-from threading import Thread
 from utility import Utility
 from api_manager import ApiManager
 from telegram_bot import TelegramBot
-
 
 # Load environment variables
 load_dotenv()
@@ -96,7 +93,7 @@ class UI:
 
 class Alert:
     @staticmethod
-    def alert_for_new_mobs(new_mobs, rewards, telegram_bot):
+    async def alert_for_new_mobs(new_mobs, rewards, telegram_bot):
         for mob in new_mobs:
             disp_time = Utility.convert_to_sgt(mob.disappeared_time)
             time_left = Utility.calculate_time_difference(disp_time)
@@ -117,7 +114,7 @@ class Alert:
                 )
                 UI.print_alert_message(alert_message)
                 if TELEGRAM_ALERTS_ENABLED:
-                    telegram_bot.send_alert(alert_message)
+                    await telegram_bot.send_alert(alert_message)
 
 class Battlefield:
     def __init__(self, request_id, bearer_token, body_hmac, mob_list, telegram_bot):
@@ -127,7 +124,7 @@ class Battlefield:
         self.telegram_bot = telegram_bot
         self.running = True
 
-    def run(self):
+    async def run(self):
         try:
             while self.running:
                 data = self.api_manager.get_battlefields()
@@ -149,21 +146,18 @@ class Battlefield:
                 UI.print_battlefield_info(self.mob_list, self.rewards)
                 new_mobs = self.mob_list.get_new_mobs()
                 if new_mobs:
-                    Alert.alert_for_new_mobs(new_mobs, self.rewards, self.telegram_bot)
+                    await Alert.alert_for_new_mobs(new_mobs, self.rewards, self.telegram_bot)
 
                 last_updated = self.mob_list.get_last_updated()
                 UI.print_last_updated(last_updated)
-                time.sleep(SLEEP_TIME)
-        except KeyboardInterrupt:
+                await asyncio.sleep(SLEEP_TIME)
+        except asyncio.CancelledError:
             self.stop()
 
     def stop(self):
         self.running = False
 
-def run_battlefield(battlefield):
-    battlefield.run()
-
-def main():
+async def main():
     parser = argparse.ArgumentParser(description='Run the battlefield monitoring script.')
     parser.add_argument('-token', '--bearer_token', required=True, help='Bearer token for authentication')
     args = parser.parse_args()
@@ -177,30 +171,26 @@ def main():
 
     battlefield = Battlefield(REQUEST_ID, args.bearer_token, BODY_HMAC, mob_list, telegram_bot)
 
-    # Start the battlefield monitoring in a separate thread
-    battlefield_thread = Thread(target=run_battlefield, args=(battlefield,))
-    battlefield_thread.daemon = True
-    battlefield_thread.start()
+    battlefield_task = asyncio.create_task(battlefield.run())
 
     if TELEGRAM_ALERTS_ENABLED:
         try:
-            telegram_bot.start()  # This runs the Telegram bot on the main thread
+            await telegram_bot.start()  # This runs the Telegram bot
         except KeyboardInterrupt:
             print("Shutdown requested...")
             battlefield.stop()
-            telegram_bot.stop()
+            await asyncio.gather(battlefield_task)
+            await telegram_bot.stop()
     else:
         try:
             while True:
-                time.sleep(1)
+                await asyncio.sleep(1)
         except KeyboardInterrupt:
             print("Shutdown requested...")
             battlefield.stop()
-
-    # Ensure all threads are joined
-    battlefield_thread.join(timeout=1.0)
+            await asyncio.gather(battlefield_task)
 
     print("Successfully shutdown the service.")
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

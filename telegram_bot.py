@@ -40,18 +40,25 @@ class TelegramBot:
 
         await update.message.reply_text(message)
 
-    def send_alert(self, message):
+    async def send_alert(self, message):
         url = f"https://api.telegram.org/bot{self.token}/sendMessage"
         data = {
             "chat_id": os.getenv('TELEGRAM_CHAT_ID'),
             "text": message
         }
-        requests.post(url, data=data)
+        await asyncio.to_thread(requests.post, url, data=data)
 
-    def start(self):
-        asyncio.run(self.application.run_polling())
+    async def start(self):
+        await self.application.initialize()
+        await self.application.start()
+        await self.application.updater.start_polling()
+        await self.idle()
 
-    def stop(self):
-        # No explicit stop needed for the simplified version, 
-        # this is just a placeholder to maintain interface consistency
-        pass
+    async def idle(self):
+        """Block until a signal is received, then clean up."""
+        while self.running:
+            await asyncio.sleep(1)
+
+    async def stop(self):
+        self.running = False
+        await self.application.stop()
