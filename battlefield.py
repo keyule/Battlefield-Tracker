@@ -160,18 +160,22 @@ class Battlefield:
     def stop(self):
         self.running = False
 
+def start_telegram_bot(bot):
+    """Function to run the bot, intended to be used as a threading target."""
+    bot.run()
+
 def main():
     parser = argparse.ArgumentParser(description='Run the battlefield monitoring script.')
     parser.add_argument('-token', '--bearer_token', required=True, help='Bearer token for authentication')
     args = parser.parse_args()
 
-    mob_list = MobList()
+    mob_list = MobList()  # Make sure MobList is defined and imported correctly
     telegram_bot = None
 
     # Start the Telegram Bot
     if TELEGRAM_ALERTS_ENABLED:
         telegram_bot = TelegramBot(TELEGRAM_TOKEN, mob_list)
-        telegram_bot_thread = threading.Thread(target=telegram_bot.start)
+        telegram_bot_thread = threading.Thread(target=start_telegram_bot, args=(telegram_bot,))
         telegram_bot_thread.daemon = True
         telegram_bot_thread.start()
 
@@ -186,12 +190,12 @@ def main():
     except KeyboardInterrupt:
         print("Shutdown requested...")
         battlefield.stop()
-        if TELEGRAM_ALERTS_ENABLED:
+        if TELEGRAM_ALERTS_ENABLED and telegram_bot:
             telegram_bot.stop()
 
     # Ensure all threads are joined
     battlefield_thread.join(timeout=1.0)
-    if TELEGRAM_ALERTS_ENABLED:
+    if TELEGRAM_ALERTS_ENABLED and telegram_bot:
         telegram_bot_thread.join(timeout=1.0)
 
     print("Successfully shutdown the service.")

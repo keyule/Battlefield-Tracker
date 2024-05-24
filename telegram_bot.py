@@ -52,7 +52,6 @@ class TelegramBot:
     def start(self):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        self.application = Application.builder().token(self.token).build()
         task = loop.create_task(self.application.run_polling(allowed_updates=Update.ALL_TYPES))
         try:
             loop.run_forever()
@@ -64,3 +63,10 @@ class TelegramBot:
     def stop(self):
         loop = asyncio.get_event_loop()
         loop.stop()
+
+    def run(self):
+        """Run the bot using an asyncio event loop."""
+        try:
+            asyncio.run(self.start())
+        except Exception as e:
+            print(f"An error occurred in the Telegram bot: {e}")
