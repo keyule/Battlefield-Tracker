@@ -4,11 +4,14 @@ from dotenv import load_dotenv
 import json
 import time
 import sys
+import threading
+import asyncio
 from prettytable import PrettyTable
 from threading import Thread
 from utility import Utility
 from api_manager import ApiManager
 from telegram_bot import TelegramBot
+
 
 # Load environment variables
 load_dotenv()
@@ -21,7 +24,7 @@ TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 TELEGRAM_ALERTS_ENABLED = os.getenv('TELEGRAM_ALERTS_ENABLED', 'False') == 'True'
 MIN_TIME_LEFT = 70  # Time left threshold in minutes for alert
-SLEEP_TIME = 60  # Sleep time in seconds (5 minutes)
+SLEEP_TIME = 30  # Sleep time in seconds (5 minutes)
 
 class Rewards:
     def __init__(self, rewards_file):
@@ -168,7 +171,7 @@ def main():
     # Start the Telegram Bot
     if TELEGRAM_ALERTS_ENABLED:
         telegram_bot = TelegramBot(TELEGRAM_TOKEN, mob_list)
-        telegram_bot_thread = Thread(target=telegram_bot.start)
+        telegram_bot_thread = threading.Thread(target=lambda: asyncio.run(telegram_bot.start()))
         telegram_bot_thread.daemon = True
         telegram_bot_thread.start()
 
