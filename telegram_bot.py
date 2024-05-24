@@ -3,7 +3,6 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 import os
 import requests
 import asyncio
-import time
 from utility import Utility
 
 class TelegramBot:
@@ -50,23 +49,4 @@ class TelegramBot:
         requests.post(url, data=data)
 
     def start(self):
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        task = loop.create_task(self.application.run_polling(allowed_updates=Update.ALL_TYPES))
-        try:
-            loop.run_forever()
-        finally:
-            task.cancel()
-            loop.run_until_complete(task) 
-            loop.close()
-
-    def stop(self):
-        loop = asyncio.get_event_loop()
-        loop.stop()
-
-    def run(self):
-        """Run the bot using an asyncio event loop."""
-        try:
-            asyncio.run(self.start())
-        except Exception as e:
-            print(f"An error occurred in the Telegram bot: {e}")
+        asyncio.run(self.application.run_polling())

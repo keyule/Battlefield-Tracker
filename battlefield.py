@@ -125,7 +125,7 @@ class Battlefield:
         self.mob_list = mob_list
         self.rewards = Rewards('rewards.json')
         self.telegram_bot = telegram_bot
-        self.running = True  # Add a running flag
+        self.running = True
 
     def run(self):
         try:
@@ -169,37 +169,38 @@ def main():
     parser.add_argument('-token', '--bearer_token', required=True, help='Bearer token for authentication')
     args = parser.parse_args()
 
-    mob_list = MobList()  # Make sure MobList is defined and imported correctly
+    mob_list = MobList()
     telegram_bot = None
 
-    # Start the Telegram Bot
     if TELEGRAM_ALERTS_ENABLED:
         telegram_bot = TelegramBot(TELEGRAM_TOKEN, mob_list)
-        telegram_bot_thread = threading.Thread(target=start_telegram_bot, args=(telegram_bot,))
-        telegram_bot_thread.daemon = True
-        telegram_bot_thread.start()
 
     battlefield = Battlefield(REQUEST_ID, args.bearer_token, BODY_HMAC, mob_list, telegram_bot)
     battlefield_thread = Thread(target=battlefield.run)
     battlefield_thread.daemon = True
     battlefield_thread.start()
 
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print("Shutdown requested...")
-        battlefield.stop()
-        if TELEGRAM_ALERTS_ENABLED and telegram_bot:
+    if TELEGRAM_ALERTS_ENABLED:
+        try:
+            telegram_bot.start()
+        except KeyboardInterrupt:
+            print("Shutdown requested...")
+            battlefield.stop()
             telegram_bot.stop()
+    else:
+        try:
+            while True:
+                time.sleep(1)
+        except KeyboardInterrupt:
+            print("Shutdown requested...")
+            battlefield.stop()
 
     # Ensure all threads are joined
     battlefield_thread.join(timeout=1.0)
-    if TELEGRAM_ALERTS_ENABLED and telegram_bot:
-        telegram_bot_thread.join(timeout=1.0)
 
     print("Successfully shutdown the service.")
 
 if __name__ == "__main__":
     main()
+
 
