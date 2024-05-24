@@ -52,11 +52,13 @@ class TelegramBot:
     def start(self):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        loop.create_task(self.application.run_polling(allowed_updates=Update.ALL_TYPES))
-
+        self.application = Application.builder().token(self.token).build()
+        task = loop.create_task(self.application.run_polling(allowed_updates=Update.ALL_TYPES))
         try:
             loop.run_forever()
         finally:
+            task.cancel()
+            loop.run_until_complete(task) 
             loop.close()
 
     def stop(self):

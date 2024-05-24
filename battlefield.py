@@ -171,7 +171,7 @@ def main():
     # Start the Telegram Bot
     if TELEGRAM_ALERTS_ENABLED:
         telegram_bot = TelegramBot(TELEGRAM_TOKEN, mob_list)
-        telegram_bot_thread = threading.Thread(target=lambda: asyncio.run(telegram_bot.start()))
+        telegram_bot_thread = threading.Thread(target=telegram_bot.start)
         telegram_bot_thread.daemon = True
         telegram_bot_thread.start()
 
