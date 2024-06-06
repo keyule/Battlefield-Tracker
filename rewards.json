@@ -152,8 +152,8 @@
     ["1000 Diamond"]
   ],
   "32": [
-    ["Novice Boots", "1 Red Chest"],
-    ["Novice Boots"],
+    ["Novice Shoes", "1 Red Chest"],
+    ["Novice Shoes"],
     ["1 Red Chest", "60 Pickup Ticket"],
     ["1 Blue Chest", "20 Pickup Ticket"],
     ["2000 Diamond"]
@@ -168,23 +168,23 @@
     ["1200 Diamond"]
   ],
   "36": [
-    ["Novice Boots"],
+    ["Novice Shoes"],
     ["1 Red Chest", "100 Dark Gem"],
     ["1 Purple Chest", "100 Dark Gem"],
     ["1 Blue Chest", "80 Dark Gem"],
     ["2500 Diamond"]
   ],
   "37": [
-    ["Novice Boots", "2 Red Chest", "200 Pickup Ticket"],
-    ["Novice Boots", "1 Red Chest", "100 Pickup Ticket"],
-    ["Novice Boots", "1 Purple Chest", "50 Pickup Ticket"],
+    ["Novice Shoes", "2 Red Chest", "200 Pickup Ticket"],
+    ["Novice Shoes", "1 Red Chest", "100 Pickup Ticket"],
+    ["Novice Shoes", "1 Purple Chest", "50 Pickup Ticket"],
     ["1 Purple Chest", "30 Pickup Ticket"],
     ["4000 Diamond"]
   ],
   "38": [],
   "39": [],
   "40": [
-    ["Novice Boots", "1 Red Chest", "100 Rune Ticket"],
+    ["Novice Shoes", "1 Red Chest", "100 Rune Ticket"],
     ["2 Purple Chest", "100 Pickup Ticket", "100 Rune Ticket"],
     ["1 Purple Chest", "50 Pickup Ticket", "50 Rune Ticket"],
     ["2 Blue Chest", "30 Rune Ticket"],
@@ -197,7 +197,13 @@
     ["2 Blue Chest", "100 Rune Ticket"],
     ["8000 Diamond"]
   ],
-  "42": [],
+  "42": [
+    ["Traveler Shoes", "3 Red Chest", "100 Mythic Pickup Ticket"],
+    ["Traveler Shoes"],
+    ["Novice Shoes", "5 Purple Chest", "100 Mythic Pickup Ticket"],
+    ["3 Purple Chest", "200 Companion Ticket"],
+    ["12000 Diamond"]
+  ],
   "43": [],
   "44": [],
   "45": [
@@ -261,7 +267,13 @@
     ["8000 Diamond"]
   ],
   "57": [],
-  "58": [],
+  "58": [   
+    ["Traveler Scarf", "5 Red Chest", "500 Pickup Ticket", "500 Rune Ticket"],
+    ["Traveler Scarf", "1 Red Chest"],
+    ["Novice Scarf", "3 Red Chest", "250 Pickup Ticket", "250 Rune Ticket"],
+    ["Novice Scarf", "2 Purple Chest"],
+    ["16000 Diamond"]
+  ],
   "59": [],
   "60": [
     ["4 Red Chest"],
