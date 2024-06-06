@@ -267,7 +267,13 @@
     ["8000 Diamond"]
   ],
   "57": [],
-  "58": [],
+  "58": [   
+    ["Traveler Scarf", "5 Red Chest", "500 Pickup Ticket", "500 Rune Ticket"],
+    ["Traveler Scarf", "1 Red Chest"],
+    ["Novice Scarf", "3 Red Chest", "250 Pickup Ticket", "250 Rune Ticket"],
+    ["Novice Scarf", "2 Purple Chest"],
+    ["16000 Diamond"]
+  ],
   "59": [],
   "60": [
     ["4 Red Chest"],

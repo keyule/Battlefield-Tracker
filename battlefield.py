@@ -21,7 +21,7 @@ TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 TELEGRAM_ALERTS_ENABLED = os.getenv('TELEGRAM_ALERTS_ENABLED', 'False') == 'True'
 MIN_TIME_LEFT = 70  # Time left threshold in minutes for alert
-SLEEP_TIME = 30  # Sleep time in seconds (5 minutes)
+SLEEP_TIME = 60  # Sleep time in seconds (5 minutes)
 
 class Rewards:
     def __init__(self, rewards_file):
