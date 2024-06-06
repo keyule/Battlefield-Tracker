@@ -1,9 +1,11 @@
 from telegram import Update
+from telegram.constants import ParseMode
 from telegram.ext import Application, CommandHandler, ContextTypes
 import os
 import requests
 import asyncio
 from utility import Utility
+from prettytable import PrettyTable
 
 class TelegramBot:
     def __init__(self, token, mob_list):
@@ -24,30 +26,38 @@ class TelegramBot:
         if not mobs:
             message = "No mobs available."
         else:
-            message = "Current mobs:\n"
-            for mob in mobs:
-                # Convert despawn time to SGT using the Utility class
-                disp_time_sgt = Utility.convert_to_sgt(mob.disappeared_time)
-                # Calculate the time left until despawn
-                time_left = Utility.calculate_time_difference(disp_time_sgt)
-                # Format the time left for display
-                time_left_str = Utility.format_time_left(time_left)
+            table = PrettyTable()
+            table.field_names = ["Reg", "Lvl", "DeTime", "TLeft"]
 
-                message += (f"ID: {mob.mob_id}, Region: {mob.region}, "
-                            f"Level: {mob.level}, Despawn Time: {disp_time_sgt.strftime('%Y-%m-%d %H:%M:%S')}, "
-                            f"Time Left: {time_left_str}\n")
-            message += f"\nLast Updated: {last_updated}"
+            for mob in self.mob_list.mobs:
+                disp_time = Utility.convert_to_sgt(mob.disappeared_time)
+                time_left = Utility.calculate_time_difference(disp_time)
+                time_left_str = Utility.format_time_left_TG(time_left)
+                table.add_row([mob.region, mob.level, disp_time.strftime('%H:%M:%S'), time_left_str])
 
-        await update.message.reply_text(message)
+        await update.message.reply_text(f'```{table}```', parse_mode=ParseMode.MARKDOWN_V2)
 
     async def send_alert(self, message):
-        url = f"https://api.telegram.org/bot{self.token}/sendMessage"
-        data = {
-            "chat_id": os.getenv('TELEGRAM_CHAT_ID'),
-            "text": message
-        }
-        await asyncio.to_thread(requests.post, url, data=data)
+        chat_ids = os.getenv('TELEGRAM_CHAT_ID').split(',')
+        for chat_id in chat_ids:
+            chat_id = chat_id.strip()  # Ensuring no leading/trailing whitespace
+            try:
+                # Use self.application.bot to access the bot instance
+                await self.application.bot.send_message(chat_id=chat_id, text=message)
+            except Exception as e:
+                print(f"Failed to send message to {chat_id}: {e}")
 
+    # async def send_alert(self, message):
+    #     chat_ids = os.getenv('TELEGRAM_CHAT_ID').split(',')
+    #     url = f"https://api.telegram.org/bot{self.token}/sendMessage"
+    #     for chat_id in chat_ids:
+    #         chat_id = chat_id.strip()
+    #         data = {
+    #             "chat_id": chat_id,
+    #             "text": message
+    #         }
+    #     await asyncio.to_thread(requests.post, url, data=data)
+    
     async def start(self):
         await self.application.initialize()
         await self.application.start()
