@@ -31,3 +31,9 @@ class Utility:
     def get_current_time():
         """Return the current time."""
         return datetime.now().strftime("%H:%M:%S")
+
+    @staticmethod
+    def format_time_left_TG(time_left):
+        hours_left = time_left.seconds // 3600
+        minutes_left_only = (time_left.seconds % 3600) // 60
+        return f"{hours_left}h {minutes_left_only}m" if hours_left > 0 else f"{minutes_left_only}m"

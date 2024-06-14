@@ -9,6 +9,7 @@ from prettytable import PrettyTable
 from utility import Utility
 from api_manager import ApiManager
 from telegram_bot import TelegramBot
+from rewards import Rewards
 
 # Load environment variables
 load_dotenv()
@@ -22,19 +23,6 @@ TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 TELEGRAM_ALERTS_ENABLED = os.getenv('TELEGRAM_ALERTS_ENABLED', 'False') == 'True'
 MIN_TIME_LEFT = 70  # Time left threshold in minutes for alert
 SLEEP_TIME = 60  # Sleep time in seconds (5 minutes)
-
-class Rewards:
-    def __init__(self, rewards_file):
-        self.rewards_data = self.load_rewards(rewards_file)
-
-    def load_rewards(self, rewards_file):
-        with open(rewards_file, 'r') as file:
-            return json.load(file)
-
-    def get_first_place_prize(self, reward_group_id):
-        if str(reward_group_id) in self.rewards_data and self.rewards_data[str(reward_group_id)]:
-            return ', '.join(self.rewards_data[str(reward_group_id)][0])
-        return "No data available"
 
 class Mob:
     def __init__(self, mob_id, region, level, disappeared_time, reward_group_id):
@@ -56,7 +44,7 @@ class MobList:
         self.last_updated = Utility.get_current_time()
 
     def get_new_mobs(self):
-        if self.last_updated is None:
+        if not self.previous_ids:
             # If last_updated is None, it's the first run, so don't count any mobs as new.
             return []
         new_mobs = [mob for mob in self.mobs if mob.mob_id not in self.previous_ids]
@@ -101,9 +89,8 @@ class Alert:
             minutes_left = Utility.calculate_minutes_left(time_left)
 
             first_place_prize = rewards.get_first_place_prize(mob.reward_group_id)
-
-            if minutes_left < MIN_TIME_LEFT:
-                alert_message = (
+            
+            alert_message = (
                     f"Alert: New mob Spawned!\n"
                     f"ID: {mob.mob_id}\n"
                     f"Region: {mob.region}\n"
@@ -112,9 +99,18 @@ class Alert:
                     f"Reward Group ID: {mob.reward_group_id}\n"
                     f"1st Prize: {first_place_prize}"
                 )
+
+            alert_message2 = (
+                f"New Mob Spawned! Level: {mob.level}, Time Left: {time_left_str}, 1st Prize: {first_place_prize}"
+            )
+
+            if minutes_left < MIN_TIME_LEFT:
                 UI.print_alert_message(alert_message)
                 if TELEGRAM_ALERTS_ENABLED:
                     await telegram_bot.send_alert(alert_message)
+            else:
+                UI.print_alert_message(alert_message2)
+            
 
 class Battlefield:
     def __init__(self, request_id, bearer_token, body_hmac, mob_list, telegram_bot):
