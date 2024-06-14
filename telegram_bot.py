@@ -94,7 +94,7 @@ class TelegramBot:
                 subscribers = file.readlines()
             for subscriber in subscribers:
                 chat_id = subscriber.split(',')[0].strip()
-                await self.application.bot.send_excerpt(chat_id=chat_id, text=message)
+                await self.application.bot.send_message(chat_id=chat_id, text=message)
         except Exception as e:
             print(f"Failed to send message: {e}")
     
