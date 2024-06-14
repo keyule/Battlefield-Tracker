@@ -40,23 +40,11 @@ class TelegramBot:
     async def send_alert(self, message):
         chat_ids = os.getenv('TELEGRAM_CHAT_ID').split(',')
         for chat_id in chat_ids:
-            chat_id = chat_id.strip()  # Ensuring no leading/trailing whitespace
+            chat_id = chat_id.strip()
             try:
-                # Use self.application.bot to access the bot instance
                 await self.application.bot.send_message(chat_id=chat_id, text=message)
             except Exception as e:
                 print(f"Failed to send message to {chat_id}: {e}")
-
-    # async def send_alert(self, message):
-    #     chat_ids = os.getenv('TELEGRAM_CHAT_ID').split(',')
-    #     url = f"https://api.telegram.org/bot{self.token}/sendMessage"
-    #     for chat_id in chat_ids:
-    #         chat_id = chat_id.strip()
-    #         data = {
-    #             "chat_id": chat_id,
-    #             "text": message
-    #         }
-    #     await asyncio.to_thread(requests.post, url, data=data)
     
     async def start(self):
         await self.application.initialize()
