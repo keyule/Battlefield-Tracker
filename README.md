@@ -18,6 +18,8 @@ This Python script is designed to monitor and report on battlefield conditions a
 - PyTZ
 - Python-dotenv
 - PrettyTable
+- python-telegram-bot
+- python-telegram-bot[job-queue]
 
 ## Installation
 
@@ -25,7 +27,7 @@ This Python script is designed to monitor and report on battlefield conditions a
 2. Install the required Python packages:
 
 ```bash
-pip install requests pytz python-dotenv prettytable
+pip install requests pytz python-dotenv prettytable python-telegram-bot
 ```
 3. Ensure that you have the necessary environment variables set. You can do this by creating a .env file in the same directory as the script with the following contents:
 ```plaintext

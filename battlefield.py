@@ -15,7 +15,7 @@ from rewards import Rewards
 load_dotenv()
 
 # Constants
-REGION_MAP = {0: "Pirate", 1: "Cat", 2: "Wolf", 3: "Food"}
+REGION_MAP = {0: "Pir", 1: "Cat", 2: "Wolf", 3: "Food"}
 REQUEST_ID = int(os.getenv('REQUEST_ID'))
 BODY_HMAC = os.getenv('BODY_HMAC')
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
