@@ -1,6 +1,7 @@
 # Battlefield Monitoring Tool
 
-** This method has been patched and no longer works. **
+**This method has been patched and no longer works.**
+**For a lousier version see: [Here](https://github.com/keyule/Battlefield-Tracker2)**
 
 
 This Python script is designed to monitor and report on battlefield conditions and mob spawns in a specific online game. It connects to the game's API to fetch real-time data about active battlefields, including their ID, region, level, time information, and reward groups. The script tracks changes over time and alerts users when new mobs that meet certain criteria appear.
